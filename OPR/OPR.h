@@ -20,12 +20,12 @@ using namespace std;
 #ifndef XMLCheckResult
 	#define XMLCheckResult(a_eResult) if (a_eResult != XML_SUCCESS) { cerr << "Error " << a_eResult << ", could not load file." << endl; getchar(); return a_eResult; }
 #endif
-#define POOL_SIZE_TRANSFER 10
-#define POOL_SIZE_SWAP 10
-#define TRANSFER_TABU_LIST_SIZE 5
-#define SWAP_TABU_LIST_SIZE 5
-#define MAX_IT_TRANSFER 10
-#define MAX_IT_SWAP 10
+#define POOL_SIZE_TRANSFER 1
+#define POOL_SIZE_SWAP 1
+#define TRANSFER_TABU_LIST_SIZE 8
+#define SWAP_TABU_LIST_SIZE 8
+#define MAX_IT_TRANSFER 2
+#define MAX_IT_SWAP 2
 
 typedef tuple<vector<pair<vector<int>, int>>, pair<int, int>, int> transferSolutionTuple;
 /*
