@@ -20,6 +20,24 @@ using namespace std;
 #ifndef XMLCheckResult
 	#define XMLCheckResult(a_eResult) if (a_eResult != XML_SUCCESS) { cerr << "Error " << a_eResult << ", could not load file." << endl; getchar(); return a_eResult; }
 #endif
+#define POOL_SIZE_TRANSFER 10
+#define POOL_SIZE_SWAP 10
+#define TRANSFER_TABU_LIST_SIZE 5
+#define SWAP_TABU_LIST_SIZE 5
+#define MAX_IT_TRANSFER 10
+#define MAX_IT_SWAP 10
+
+typedef tuple<vector<pair<vector<int>, int>>, pair<int, int>, int> transferSolutionTuple;
+/*
+* Custom compare for transfer heuristic
+*/
+bool compareTransferSolution(transferSolutionTuple &sol1, transferSolutionTuple &sol2);
+
+typedef tuple<vector<pair<vector<int>, int>>, pair<pair<int, int>, pair<int, int>>, int> swapSolutionTuple;
+/*
+* Custom compare for swap heuristic
+*/
+bool compareSwapSolution(swapSolutionTuple &sol1, swapSolutionTuple &sol2);
 
 /*
 * Prints the content of a matrix
@@ -96,18 +114,18 @@ int getMaxCostRoute(vector<pair<vector<int>, int>> solution);
 * Each route are then improved using the intra-route heuristic
 * As we want to reduce the maximum cost, we first apply this heuristic to the route which has the highest cost
 */
-pair<vector<pair<vector<int>, int>>, bool> transferHeuristic(vector<pair<vector<int>, int>> solution, vector<vector<int>> eligibility, vector<vector<int>> minPath, vector<int> startRoomMinPath, vector<int> serviceTime);
+transferSolutionTuple transferHeuristic(vector<pair<vector<int>, int>> solution, vector<vector<int>> eligibility, vector<vector<int>> minPath, vector<int> startRoomMinPath, vector<int> serviceTime);
 /*
 * SWAP heuristic
 * The objective of this heuristic is to swap two Manual Actions of two different routes
 * The first Manual Action is one taken from the route that creates the Cmax
 * The other one is chosen randomly between the Manual Action feasible by the OP and not already in his route
 */
-pair<vector<pair<vector<int>, int>>, bool> swapHeuristic(vector<pair<vector<int>, int>> solution, vector<vector<int>> eligibility, vector<vector<int>> minPath, vector<int> startRoomMinPath, vector<int> serviceTime);
+swapSolutionTuple swapHeuristic(vector<pair<vector<int>, int>> solution, vector<vector<int>> eligibility, vector<vector<int>> minPath, vector<int> startRoomMinPath, vector<int> serviceTime);
 /*
 * Calls the different heuristics to improve the initial solution
 */
-vector<pair<vector<int>, int>> improveSolution(vector<pair<vector<int>, int>> solution, vector<vector<int>> minPath, vector<int> startRoomMinPath, vector<int> serviceTime, vector<vector<int>> eligibility);
+vector<pair<vector<int>, int>> improveSolution(vector<pair<vector<int>, int>> solution, vector<vector<int>> minPath, vector<int> startRoomMinPath, vector<int> serviceTime, vector<vector<int>> eligibility, clock_t t1);
 /*
  * Returns the i-th Manual Action
  */
