@@ -13,6 +13,7 @@
 #include <algorithm>
 #include <limits.h>
 #include <sstream>
+#include <iterator>
 
 using namespace tinyxml2;
 using namespace std;
@@ -20,12 +21,14 @@ using namespace std;
 #ifndef XMLCheckResult
 	#define XMLCheckResult(a_eResult) if (a_eResult != XML_SUCCESS) { cerr << "Error " << a_eResult << ", could not load file." << endl; getchar(); return a_eResult; }
 #endif
-#define POOL_SIZE_TRANSFER 1
-#define POOL_SIZE_SWAP 1
+#define POOL_SIZE_TRANSFER		10
+#define POOL_SIZE_SWAP			10
 #define TRANSFER_TABU_LIST_SIZE 8
-#define SWAP_TABU_LIST_SIZE 8
-#define MAX_IT_TRANSFER 2
-#define MAX_IT_SWAP 2
+#define SWAP_TABU_LIST_SIZE		8
+#define MAX_IT_TRANSFER			5
+#define MAX_IT_SWAP				5
+#define MAX_IT_INTRA			10
+#define MAX_IT_SA				5
 
 typedef tuple<vector<pair<vector<int>, int>>, pair<int, int>, int> transferSolutionTuple;
 /*
@@ -125,7 +128,9 @@ swapSolutionTuple swapHeuristic(vector<pair<vector<int>, int>> solution, vector<
 /*
 * Calls the different heuristics to improve the initial solution
 */
-vector<pair<vector<int>, int>> improveSolution(vector<pair<vector<int>, int>> solution, vector<vector<int>> minPath, vector<int> startRoomMinPath, vector<int> serviceTime, vector<vector<int>> eligibility, clock_t t1);
+vector<pair<vector<int>, int>> tabuSearch(vector<pair<vector<int>, int>> solution, vector<vector<int>> minPath, vector<int> startRoomMinPath, vector<int> serviceTime, vector<vector<int>> eligibility, clock_t t1, int maxTimeAllowed);
+vector<pair<vector<int>, int>> customSearch(vector<pair<vector<int>, int>> solution, vector<vector<int>> minPath, vector<int> startRoomMinPath, vector<int> serviceTime, vector<vector<int>> eligibility, clock_t t1, int maxTimeAllowed);
+vector<pair<vector<int>, int>> simulatedAnnealing(vector<pair<vector<int>, int>> solution, vector<vector<int>> minPath, vector<int> startRoomMinPath, vector<int> serviceTime, vector<vector<int>> eligibility, clock_t t1, int maxTimeAllowed);
 /*
  * Returns the i-th Manual Action
  */
