@@ -1,7 +1,7 @@
 ﻿  OPR.cpp
 c:\users\augustin\google drive\utc\gi06\uvs\methods and models for decision support\project\code\mmds_opr\opr\tinyxml2.cpp(2421): warning C4267: 'argument' : conversion de 'size_t' en 'int', perte possible de données
 c:\users\augustin\google drive\utc\gi06\uvs\methods and models for decision support\project\code\mmds_opr\opr\opr.cpp(9): warning C4244: 'argument' : conversion de 'time_t' en 'unsigned int', perte possible de données
-c:\users\augustin\google drive\utc\gi06\uvs\methods and models for decision support\project\code\mmds_opr\opr\opr.cpp(170): warning C4267: 'initialisation' : conversion de 'size_t' en 'int', perte possible de données
-c:\users\augustin\google drive\utc\gi06\uvs\methods and models for decision support\project\code\mmds_opr\opr\opr.cpp(194): warning C4267: 'initialisation' : conversion de 'size_t' en 'unsigned int', perte possible de données
-c:\users\augustin\google drive\utc\gi06\uvs\methods and models for decision support\project\code\mmds_opr\opr\opr.cpp(585): warning C4715: 'getMinPathBetweenRooms' : les chemins de contrôle ne retournent pas tous une valeur
+c:\users\augustin\google drive\utc\gi06\uvs\methods and models for decision support\project\code\mmds_opr\opr\opr.cpp(168): warning C4267: 'initialisation' : conversion de 'size_t' en 'int', perte possible de données
+c:\users\augustin\google drive\utc\gi06\uvs\methods and models for decision support\project\code\mmds_opr\opr\opr.cpp(192): warning C4267: 'initialisation' : conversion de 'size_t' en 'unsigned int', perte possible de données
+c:\users\augustin\google drive\utc\gi06\uvs\methods and models for decision support\project\code\mmds_opr\opr\opr.cpp(583): warning C4715: 'getMinPathBetweenRooms' : les chemins de contrôle ne retournent pas tous une valeur
   OPR.vcxproj -> C:\Users\AUGUSTIN\Google Drive\UTC\GI06\UVs\METHODS AND MODELS FOR DECISION SUPPORT\PROJECT\code\MMDS_OPR\x64\Debug\OPR.exe
